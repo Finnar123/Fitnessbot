@@ -17,6 +17,7 @@
   "homepage": "https://github.com/Finnar123/Fitnessbot#readme",
   "description": "",
   "dependencies": {
-    "discord.js": "^13.2.0"
+    "discord.js": "^13.2.0",
+    "mongoose": "^6.0.12"
   }
 }
