@@ -1,3 +1,4 @@
 workspace.code-workspace
 launch.json
 settings.json
+node_modules
