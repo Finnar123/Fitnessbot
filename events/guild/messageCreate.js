@@ -24,7 +24,7 @@ yesterday = m2 + '/' + d2 + '/' + yyyy2;
 
 module.exports = async (Discord, client, message) => {
 
-    
+    // Uses blacklist database to check if a user is blacklisted
     let checker = await checksModel.findOne({main: 'blacklists'});
         if(checker.blacklist.includes(message.author.id))
         {
@@ -32,6 +32,7 @@ module.exports = async (Discord, client, message) => {
             return;
         }
 
+    // Handles prefix
     let prefix;
     let customprefix;
     try{
@@ -46,6 +47,7 @@ module.exports = async (Discord, client, message) => {
     }catch(err){
         console.log(err);
     }
+
 
     if(message.mentions.users.first() == '900807761259036792')
     {
