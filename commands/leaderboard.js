@@ -8,6 +8,7 @@ var yyyy = today.getFullYear();
 
 today = mm + '/' + dd + '/' + yyyy;
 
+// this function returns the indexs of the top 10 largest numbers 
 function last10(arrayofBoosts)
 {
     let originalArray = arrayofBoosts.map((x) => x);
@@ -75,8 +76,6 @@ module.exports = {
         const generateEmbed = async start => {
         const current = finalarray;
 
-        // title: `Showing Characters ${start + 1}-${start + current.length} out of ${
-        //    char.length}`
         return new Discord.MessageEmbed({
         color: `#ff0000`,
         title: `Recipe Leaderboard`,

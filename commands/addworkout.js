@@ -22,8 +22,6 @@ module.exports = {
             return;
         }
         let input = args.join(' ');
-
-        // do the same thing u did with meal
         
         if(workoutData.workouts.length >= 10)
         {
@@ -31,7 +29,7 @@ module.exports = {
             return;
         }
 
-
+        // Adds a workout to the workout database
         const response = await workoutModel.findOneAndUpdate(
             {
                 userID: message.author.id,

@@ -8,6 +8,7 @@ module.exports = {
     description: 'Help command',
     async execute(client, message, args, Discord, profileData,workoutData){
 
+        // Display commands
         if(args == "")
         {
             const embed = new Discord.MessageEmbed()

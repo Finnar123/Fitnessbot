@@ -26,6 +26,7 @@ module.exports = {
 
         let checker = await checksModel.findOne({main: 'boosts'});
 
+        // checks if the user has already boosted today
         if(checker.alreadyboost.includes(message.author.id))
         {
             message.channel.send("You have already boosted.");
@@ -36,6 +37,7 @@ module.exports = {
 
         let recipecheck = await recipeModel.find({date: today});
 
+        // Checks if the user enter a valid code to boost the recipe
         let found = false;
 
         for(let x = 0; x < recipecheck.length; x++)
@@ -53,6 +55,7 @@ module.exports = {
             return;
         }
 
+        // adds the user's boost to the database
         const response = await recipeModel.findOneAndUpdate(
             {
                 date: today,
@@ -66,12 +69,8 @@ module.exports = {
             );
 
         message.channel.send(`Successfully boosted the post.`);
-
-        if(message.author.id == '264141550525612032')
-        {
-            return;
-        }
         
+        // adds user to already boost database, making them unable to boost again
         const response2 = await checksModel.findOneAndUpdate(
             {
                 main: 'boosts',

@@ -20,7 +20,7 @@ module.exports = {
 
         let responsemain = await dietModel.find({userID: message.author.id});
         
-
+        // creates back and forward buttons
         const backId = 'back'
         const forwardId = 'forward'
         const backButton = new Discord.MessageButton({
@@ -38,7 +38,7 @@ module.exports = {
 
         const {author, channel} = message;
 
-
+        // generates embed 
         const generateEmbed = async start => {
         const current = responsemain[start].meals;
 
@@ -63,7 +63,7 @@ module.exports = {
 
     const canFitOnOnePage = responsemain.length == 1
     const embedMessage = await channel.send({
-    embeds: [await generateEmbed(responsemain.length-1)], // was 0
+    embeds: [await generateEmbed(responsemain.length-1)], 
     components: canFitOnOnePage
     ? []
     : [new Discord.MessageActionRow({components: [forwardButton]})]
@@ -71,15 +71,15 @@ module.exports = {
 
     if (canFitOnOnePage) return
 
+    // allows only the author to use buttons
     const collector = embedMessage.createMessageComponentCollector({
     filter: ({user}) => user.id === author.id
     })
 
-    let currentIndex = 0
     let currentDay = responsemain.length-1;
     collector.on('collect', async interaction => {
 
-    //interaction.customId === backId ? (currentIndex -= 10) : (currentIndex += 10)
+    
     interaction.customId === backId ? (currentDay += 1) : (currentDay -= 1)
 
     await interaction.update({

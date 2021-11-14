@@ -16,6 +16,7 @@ module.exports = {
     description: 'Adds an element to your diet.',
     async execute(client, message, args, Discord, profileData,workoutData){
 
+        // incase user enters nothing
         if(args == "")
         {
             message.channel.send("You did not enter anything.");
@@ -24,12 +25,14 @@ module.exports = {
         //let input = args.toString();
         let input = args.join(' ');
 
+        // Limits how much items the user can add to their food diary
         if(profileData.meals.length >= 10)
         {
             message.channel.send("You can't add any more food to your food diary!")
             return;
         }
 
+        // Inserts the users meal in the database
         const response = await dietModel.findOneAndUpdate(
             {
                 userID: message.author.id,

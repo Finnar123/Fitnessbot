@@ -18,6 +18,7 @@ module.exports = {
     description: 'Adds a recipe.',
     async execute(client, message, args, Discord, profileData,workoutData){
 
+        // Checks if the user isn't blacklisted
         let checker = await checksModel.findOne({main: 'blacklistrecipes'});
 
         if(checker.recipeblacklist.includes(message.author.id))
@@ -25,6 +26,7 @@ module.exports = {
             return;
         }
 
+        // geenerates a random id 
         const randomNumber = Math.floor(Math.random() * 10000000);
 
         if(args == "")
@@ -34,6 +36,7 @@ module.exports = {
         }
         let input = args.join(' ');
 
+        // creates a recipe in the database
         let recipeprofile = await recipeModel.create({
             recipe: input,
             date: today,
