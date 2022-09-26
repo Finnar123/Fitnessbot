@@ -13,7 +13,7 @@ client.events = new Discord.Collection();
 //DiscordbotDB
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb+srv://ken123:PkgidVCHwwqtWwv7@cluster0.dlxep.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+mongoose.connect("", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
@@ -23,7 +23,7 @@ mongoose.connect("mongodb+srv://ken123:PkgidVCHwwqtWwv7@cluster0.dlxep.mongodb.n
 })
 
 
-client.login('OTAwODA3NzYxMjU5MDM2Nzky.YXGsmg.q8Way4M2jSfOdv3frUruOyEN0gY');
+client.login('');
 
 process.on("unhandledRejection", err => {
     console.log("Send this to error tracking: " + err.stack);
